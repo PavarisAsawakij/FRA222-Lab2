@@ -16,3 +16,425 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
 !ENTRY org.eclipse.cdt.core 1 0 2024-03-18 07:40:28.059
 !MESSAGE Indexed 'Motor PID Controller' (23 sources, 83 headers) in 4.14 sec: 5,650 declarations; 28,921 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0058%)
+
+!ENTRY org.eclipse.core.resources 4 2 2024-03-18 08:21:39.375
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 1
+org.eclipse.core.runtime.CoreException: Internal error saving launch history
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.saving(LaunchConfigurationManager.java:1182)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1DebugUIPluginSaveParticipant.saving(DebugUIPlugin.java:531)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:453)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:269)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:272)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1226)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1205)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.io.IOException: The system cannot find the path specified
+	at java.base/java.io.WinNTFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1043)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.persistLaunchHistory(LaunchConfigurationManager.java:467)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.saving(LaunchConfigurationManager.java:1180)
+	... 9 more
+!SUBENTRY 1 org.eclipse.debug.ui 4 0 2024-03-18 08:21:39.375
+!MESSAGE Internal error saving launch history
+!STACK 0
+java.io.IOException: The system cannot find the path specified
+	at java.base/java.io.WinNTFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1043)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.persistLaunchHistory(LaunchConfigurationManager.java:467)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.saving(LaunchConfigurationManager.java:1180)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1DebugUIPluginSaveParticipant.saving(DebugUIPlugin.java:531)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:453)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:269)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:272)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1226)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1205)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.debug.ui 4 0 2024-03-18 08:21:39.375
+!MESSAGE Internal error saving launch history
+!STACK 0
+java.io.IOException: The system cannot find the path specified
+	at java.base/java.io.WinNTFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1043)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.persistLaunchHistory(LaunchConfigurationManager.java:467)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.saving(LaunchConfigurationManager.java:1180)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1DebugUIPluginSaveParticipant.saving(DebugUIPlugin.java:531)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:453)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:269)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:272)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1226)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1205)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.resources 2 2 2024-03-18 08:21:39.377
+!MESSAGE Save operation warnings.
+!SUBENTRY 1 org.eclipse.core.resources 2 566 2024-03-18 08:21:39.377
+!MESSAGE Problems occurred during save.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Internal error saving launch history
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.saving(LaunchConfigurationManager.java:1182)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1DebugUIPluginSaveParticipant.saving(DebugUIPlugin.java:531)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:453)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:269)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:272)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1226)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1205)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.io.IOException: The system cannot find the path specified
+	at java.base/java.io.WinNTFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1043)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.persistLaunchHistory(LaunchConfigurationManager.java:467)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.saving(LaunchConfigurationManager.java:1180)
+	... 9 more
+!SUBENTRY 2 org.eclipse.debug.ui 4 0 2024-03-18 08:21:39.377
+!MESSAGE Internal error saving launch history
+!STACK 0
+java.io.IOException: The system cannot find the path specified
+	at java.base/java.io.WinNTFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1043)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.persistLaunchHistory(LaunchConfigurationManager.java:467)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.saving(LaunchConfigurationManager.java:1180)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1DebugUIPluginSaveParticipant.saving(DebugUIPlugin.java:531)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:453)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:269)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:272)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1226)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1205)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.cdt.dsf 4 -1 2024-03-18 08:25:55.270
+!MESSAGE Invocation exception when calling a service event handler method
+!STACK 0
+java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.cdt.dsf.service.DsfSession.doDispatchEvent(DsfSession.java:541)
+	at org.eclipse.cdt.dsf.service.DsfSession$3.run(DsfSession.java:408)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.lang.NullPointerException: Cannot invoke "org.eclipse.debug.core.ILaunchConfiguration.getAttribute(String, boolean)" because the return value of "org.eclipse.cdt.dsf.gdb.launching.GdbLaunch.getLaunchConfiguration()" is null
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunch.getUpdateThreadListOnSuspend(GdbLaunch.java:812)
+	at org.eclipse.cdt.dsf.gdb.service.GDBBackend.getUpdateThreadListOnSuspend(GDBBackend.java:244)
+	at org.eclipse.cdt.dsf.gdb.service.GDBProcesses_7_0.eventDispatched(GDBProcesses_7_0.java:2015)
+	... 12 more
+Root exception:
+java.lang.NullPointerException: Cannot invoke "org.eclipse.debug.core.ILaunchConfiguration.getAttribute(String, boolean)" because the return value of "org.eclipse.cdt.dsf.gdb.launching.GdbLaunch.getLaunchConfiguration()" is null
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunch.getUpdateThreadListOnSuspend(GdbLaunch.java:812)
+	at org.eclipse.cdt.dsf.gdb.service.GDBBackend.getUpdateThreadListOnSuspend(GDBBackend.java:244)
+	at org.eclipse.cdt.dsf.gdb.service.GDBProcesses_7_0.eventDispatched(GDBProcesses_7_0.java:2015)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.cdt.dsf.service.DsfSession.doDispatchEvent(DsfSession.java:541)
+	at org.eclipse.cdt.dsf.service.DsfSession$3.run(DsfSession.java:408)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+
+!ENTRY org.eclipse.debug.core 4 5012 2024-03-18 08:25:55.281
+!MESSAGE Launch configuration Motor PID Controller Debug at file:/C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA222-Lab2/Motor%20PID%20Controller/Motor%20PID%20Controller%20Debug.launch does not exist.
+
+!ENTRY org.eclipse.core.resources 4 2 2024-03-18 08:26:39.688
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 1
+org.eclipse.core.runtime.CoreException: Internal error saving launch history
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.saving(LaunchConfigurationManager.java:1182)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1DebugUIPluginSaveParticipant.saving(DebugUIPlugin.java:531)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:453)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:269)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:272)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1226)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1205)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.io.IOException: The system cannot find the path specified
+	at java.base/java.io.WinNTFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1043)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.persistLaunchHistory(LaunchConfigurationManager.java:467)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.saving(LaunchConfigurationManager.java:1180)
+	... 9 more
+!SUBENTRY 1 org.eclipse.debug.ui 4 0 2024-03-18 08:26:39.688
+!MESSAGE Internal error saving launch history
+!STACK 0
+java.io.IOException: The system cannot find the path specified
+	at java.base/java.io.WinNTFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1043)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.persistLaunchHistory(LaunchConfigurationManager.java:467)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.saving(LaunchConfigurationManager.java:1180)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1DebugUIPluginSaveParticipant.saving(DebugUIPlugin.java:531)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:453)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:269)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:272)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1226)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1205)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.debug.ui 4 0 2024-03-18 08:26:39.688
+!MESSAGE Internal error saving launch history
+!STACK 0
+java.io.IOException: The system cannot find the path specified
+	at java.base/java.io.WinNTFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1043)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.persistLaunchHistory(LaunchConfigurationManager.java:467)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.saving(LaunchConfigurationManager.java:1180)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1DebugUIPluginSaveParticipant.saving(DebugUIPlugin.java:531)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:453)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:269)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:272)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1226)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1205)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.resources 2 2 2024-03-18 08:26:39.691
+!MESSAGE Save operation warnings.
+!SUBENTRY 1 org.eclipse.core.resources 2 566 2024-03-18 08:26:39.691
+!MESSAGE Problems occurred during save.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Internal error saving launch history
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.saving(LaunchConfigurationManager.java:1182)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1DebugUIPluginSaveParticipant.saving(DebugUIPlugin.java:531)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:453)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:269)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:272)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1226)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1205)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.io.IOException: The system cannot find the path specified
+	at java.base/java.io.WinNTFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1043)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.persistLaunchHistory(LaunchConfigurationManager.java:467)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.saving(LaunchConfigurationManager.java:1180)
+	... 9 more
+!SUBENTRY 2 org.eclipse.debug.ui 4 0 2024-03-18 08:26:39.691
+!MESSAGE Internal error saving launch history
+!STACK 0
+java.io.IOException: The system cannot find the path specified
+	at java.base/java.io.WinNTFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1043)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.persistLaunchHistory(LaunchConfigurationManager.java:467)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.saving(LaunchConfigurationManager.java:1180)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1DebugUIPluginSaveParticipant.saving(DebugUIPlugin.java:531)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:453)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:269)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:272)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1226)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1205)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.resources 4 2 2024-03-18 08:46:13.455
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 1
+org.eclipse.core.runtime.CoreException: Internal error saving launch history
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.saving(LaunchConfigurationManager.java:1182)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1DebugUIPluginSaveParticipant.saving(DebugUIPlugin.java:531)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:453)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:269)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:272)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1226)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1205)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.io.IOException: The system cannot find the path specified
+	at java.base/java.io.WinNTFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1043)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.persistLaunchHistory(LaunchConfigurationManager.java:467)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.saving(LaunchConfigurationManager.java:1180)
+	... 9 more
+!SUBENTRY 1 org.eclipse.debug.ui 4 0 2024-03-18 08:46:13.455
+!MESSAGE Internal error saving launch history
+!STACK 0
+java.io.IOException: The system cannot find the path specified
+	at java.base/java.io.WinNTFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1043)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.persistLaunchHistory(LaunchConfigurationManager.java:467)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.saving(LaunchConfigurationManager.java:1180)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1DebugUIPluginSaveParticipant.saving(DebugUIPlugin.java:531)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:453)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:269)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:272)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1226)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1205)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.debug.ui 4 0 2024-03-18 08:46:13.455
+!MESSAGE Internal error saving launch history
+!STACK 0
+java.io.IOException: The system cannot find the path specified
+	at java.base/java.io.WinNTFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1043)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.persistLaunchHistory(LaunchConfigurationManager.java:467)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.saving(LaunchConfigurationManager.java:1180)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1DebugUIPluginSaveParticipant.saving(DebugUIPlugin.java:531)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:453)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:269)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:272)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1226)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1205)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.resources 2 2 2024-03-18 08:46:13.458
+!MESSAGE Save operation warnings.
+!SUBENTRY 1 org.eclipse.core.resources 2 566 2024-03-18 08:46:13.458
+!MESSAGE Problems occurred during save.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Internal error saving launch history
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.saving(LaunchConfigurationManager.java:1182)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1DebugUIPluginSaveParticipant.saving(DebugUIPlugin.java:531)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:453)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:269)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:272)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1226)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1205)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.io.IOException: The system cannot find the path specified
+	at java.base/java.io.WinNTFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1043)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.persistLaunchHistory(LaunchConfigurationManager.java:467)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.saving(LaunchConfigurationManager.java:1180)
+	... 9 more
+!SUBENTRY 2 org.eclipse.debug.ui 4 0 2024-03-18 08:46:13.458
+!MESSAGE Internal error saving launch history
+!STACK 0
+java.io.IOException: The system cannot find the path specified
+	at java.base/java.io.WinNTFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1043)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.persistLaunchHistory(LaunchConfigurationManager.java:467)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.saving(LaunchConfigurationManager.java:1180)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1DebugUIPluginSaveParticipant.saving(DebugUIPlugin.java:531)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:453)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:269)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:272)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1226)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1205)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.resources 4 2 2024-03-18 08:51:16.823
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 1
+org.eclipse.core.runtime.CoreException: Internal error saving launch history
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.saving(LaunchConfigurationManager.java:1182)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1DebugUIPluginSaveParticipant.saving(DebugUIPlugin.java:531)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:453)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:269)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:272)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1226)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1205)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.io.IOException: The system cannot find the path specified
+	at java.base/java.io.WinNTFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1043)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.persistLaunchHistory(LaunchConfigurationManager.java:467)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.saving(LaunchConfigurationManager.java:1180)
+	... 9 more
+!SUBENTRY 1 org.eclipse.debug.ui 4 0 2024-03-18 08:51:16.823
+!MESSAGE Internal error saving launch history
+!STACK 0
+java.io.IOException: The system cannot find the path specified
+	at java.base/java.io.WinNTFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1043)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.persistLaunchHistory(LaunchConfigurationManager.java:467)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.saving(LaunchConfigurationManager.java:1180)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1DebugUIPluginSaveParticipant.saving(DebugUIPlugin.java:531)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:453)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:269)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:272)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1226)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1205)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.debug.ui 4 0 2024-03-18 08:51:16.823
+!MESSAGE Internal error saving launch history
+!STACK 0
+java.io.IOException: The system cannot find the path specified
+	at java.base/java.io.WinNTFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1043)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.persistLaunchHistory(LaunchConfigurationManager.java:467)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.saving(LaunchConfigurationManager.java:1180)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1DebugUIPluginSaveParticipant.saving(DebugUIPlugin.java:531)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:453)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:269)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:272)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1226)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1205)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.resources 2 2 2024-03-18 08:51:16.826
+!MESSAGE Save operation warnings.
+!SUBENTRY 1 org.eclipse.core.resources 2 566 2024-03-18 08:51:16.826
+!MESSAGE Problems occurred during save.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Internal error saving launch history
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.saving(LaunchConfigurationManager.java:1182)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1DebugUIPluginSaveParticipant.saving(DebugUIPlugin.java:531)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:453)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:269)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:272)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1226)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1205)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.io.IOException: The system cannot find the path specified
+	at java.base/java.io.WinNTFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1043)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.persistLaunchHistory(LaunchConfigurationManager.java:467)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.saving(LaunchConfigurationManager.java:1180)
+	... 9 more
+!SUBENTRY 2 org.eclipse.debug.ui 4 0 2024-03-18 08:51:16.826
+!MESSAGE Internal error saving launch history
+!STACK 0
+java.io.IOException: The system cannot find the path specified
+	at java.base/java.io.WinNTFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1043)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.persistLaunchHistory(LaunchConfigurationManager.java:467)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.saving(LaunchConfigurationManager.java:1180)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1DebugUIPluginSaveParticipant.saving(DebugUIPlugin.java:531)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:453)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:269)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:272)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1226)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1205)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
