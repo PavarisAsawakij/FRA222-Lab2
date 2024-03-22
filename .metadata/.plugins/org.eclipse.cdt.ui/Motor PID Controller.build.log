@@ -1,17 +1,49 @@
-09:03:23 **** Incremental Build of configuration Debug for project Motor PID Controller ****
+20:43:06 **** Incremental Build of configuration Debug for project Motor PID Controller ****
 make -j16 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/ARM_CMSIS/CMSIS/Core/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/PrivateInclude/ -I../Middlewares/Third_Party/ARM_CMSIS/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/Include -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA222-Lab2/Motor PID Controller/Source/BasicMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA222-Lab2/Motor PID Controller/Source/BayesFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA222-Lab2/Motor PID Controller/Source/CommonTables" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA222-Lab2/Motor PID Controller/Source/ComplexMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA222-Lab2/Motor PID Controller/Source/ControllerFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA222-Lab2/Motor PID Controller/Source/DistanceFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA222-Lab2/Motor PID Controller/Source/FastMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA222-Lab2/Motor PID Controller/Source/FilteringFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA222-Lab2/Motor PID Controller/Source/InterpolationFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA222-Lab2/Motor PID Controller/Source/MatrixFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA222-Lab2/Motor PID Controller/Source/QuaternionMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA222-Lab2/Motor PID Controller/Source/StatisticsFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA222-Lab2/Motor PID Controller/Source/SupportFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA222-Lab2/Motor PID Controller/Source/SVMFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA222-Lab2/Motor PID Controller/Source/TransformFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA222-Lab2/Motor PID Controller/Source/WindowFunctions" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:141:28: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
+  141 |   HAL_ADC_Start_DMA(&hadc1,InputRead, 100); // DMA Read
+      |                            ^~~~~~~~~
+      |                            |
+      |                            uint16_t * {aka short unsigned int *}
+In file included from ../Core/Inc/stm32g4xx_hal_conf.h:228,
+                 from ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_adc.h:2242:78: note: expected 'uint32_t *' {aka 'long unsigned int *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
+ 2242 | HAL_StatusTypeDef       HAL_ADC_Start_DMA(ADC_HandleTypeDef *hadc, uint32_t *pData, uint32_t Length);
+      |                                                                    ~~~~~~~~~~^~~~~
+../Core/Src/main.c:166:11: warning: implicit declaration of function 'updateInput' [-Wimplicit-function-declaration]
+  166 |           updateInput();
+      |           ^~~~~~~~~~~
+../Core/Src/main.c:167:11: warning: implicit declaration of function 'motorControl' [-Wimplicit-function-declaration]
+  167 |           motorControl();
+      |           ^~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:678:6: warning: conflicting types for 'updateInput'; have 'void()'
+  678 | void updateInput()
+      |      ^~~~~~~~~~~
+../Core/Src/main.c:166:11: note: previous implicit declaration of 'updateInput' with type 'void()'
+  166 |           updateInput();
+      |           ^~~~~~~~~~~
+../Core/Src/main.c:708:6: warning: conflicting types for 'motorControl'; have 'void()'
+  708 | void motorControl()
+      |      ^~~~~~~~~~~~
+../Core/Src/main.c:167:11: note: previous implicit declaration of 'motorControl' with type 'void()'
+  167 |           motorControl();
+      |           ^~~~~~~~~~~~
 arm-none-eabi-gcc -o "Motor PID Controller.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA222-Lab2\Motor PID Controller\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Motor PID Controller.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Motor PID Controller.elf
  
 arm-none-eabi-size  Motor\ PID\ Controller.elf 
 arm-none-eabi-objdump -h -S Motor\ PID\ Controller.elf  > "Motor PID Controller.list"
    text	   data	    bss	    dec	    hex	filename
-  22100	     20	   2072	  24192	   5e80	Motor PID Controller.elf
+  29880	     24	   2584	  32488	   7ee8	Motor PID Controller.elf
 Finished building: default.size.stdout
  
 Finished building: Motor PID Controller.list
  
 
-09:03:24 Build Finished. 0 errors, 0 warnings. (took 930ms)
+20:43:09 Build Finished. 0 errors, 5 warnings. (took 2s.318ms)
 
