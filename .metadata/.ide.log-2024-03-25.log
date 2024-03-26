@@ -1,0 +1,126 @@
+2024-03-25 16:15:52,911 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2024-03-25 16:15:57,520 [INFO] ProjectBuilder:4747 - Time for Generating toolchain IDE Files: 5907mS.
+2024-03-25 16:15:57,522 [INFO] ProjectBuilder:2947 - Time for Copy CMSIS : 1mS.
+2024-03-25 16:15:57,542 [INFO] ProjectBuilder:2947 - Time for Copy CMSIS : 0mS.
+2024-03-25 23:01:30,440 [INFO] NvicIntPanel:101 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2024-03-25 23:01:59,874 [INFO] NvicIntPanel:101 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2024-03-25 23:02:04,479 [INFO] NvicIntPanel:101 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2024-03-25 23:02:08,407 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 677364608 Bytes (1073741824)
+2024-03-25 23:02:11,864 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 792128056 Bytes (1073741824)
+2024-03-25 23:02:12,152 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: TIM1_8G4
+2024-03-25 23:02:12,152 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: TIM1_8G4
+2024-03-25 23:02:12,152 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: TIM1_8G4
+2024-03-25 23:02:12,152 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: ARM.CMSIS-DSP.1.15.0
+2024-03-25 23:02:12,152 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SYS
+2024-03-25 23:02:12,152 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: ADC
+2024-03-25 23:02:12,152 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: RCC
+2024-03-25 23:02:12,152 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: NVIC
+2024-03-25 23:02:12,152 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: USART
+2024-03-25 23:02:12,152 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: DMA
+2024-03-25 23:02:12,152 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: TIM1_8G4
+2024-03-25 23:02:12,152 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: TIM1_8G4
+2024-03-25 23:02:12,152 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: GPIO
+2024-03-25 23:02:12,154 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: ARM.CMSIS.6.0.0
+2024-03-25 23:02:12,155 [WARN] ThirdPartyIpManager:480 - Condition 'TrustZone' not fulfilled in pack 'ARM.CMSIS.6.0.0'
+2024-03-25 23:02:12,156 [WARN] ThirdPartyRefParameterProcessor:173 - Condition 'TrustZone;(SIiDtzIiTZ)' has not the same result using Semaphore or Dynamic solver for pack 'ARM.CMSIS.6.0.0''
+2024-03-25 23:02:12,156 [WARN] ThirdPartyIpManager:480 - Condition 'TZ Secure' not fulfilled in pack 'ARM.CMSIS.6.0.0'
+2024-03-25 23:02:12,156 [WARN] ThirdPartyRefParameterProcessor:173 - Condition 'TZ Secure;(SIiDtzIiTZ&SIiDsecureIiSecure)' has not the same result using Semaphore or Dynamic solver for pack 'ARM.CMSIS.6.0.0''
+2024-03-25 23:02:12,156 [WARN] ThirdPartyIpManager:480 - Condition 'TZ Secure' not fulfilled in pack 'ARM.CMSIS.6.0.0'
+2024-03-25 23:02:12,156 [WARN] ThirdPartyRefParameterProcessor:173 - Condition 'TZ Secure;(SIiDtzIiTZ&SIiDsecureIiSecure)' has not the same result using Semaphore or Dynamic solver for pack 'ARM.CMSIS.6.0.0''
+2024-03-25 23:02:12,157 [WARN] ThirdPartyIpManager:480 - Condition 'ARMv7-A Device' not fulfilled in pack 'ARM.CMSIS-DSP.1.15.0'
+2024-03-25 23:02:12,157 [WARN] ThirdPartyIpManager:480 - Condition 'ARMv7-A Device' not fulfilled in pack 'ARM.CMSIS-DSP.1.15.0'
+2024-03-25 23:02:12,159 [INFO] CodeGenerator:807 - code generatio: config db path: C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.10.0.202311202037\\db\
+2024-03-25 23:02:12,172 [INFO] Argument:325 - Argument : hdmavalue: null
+2024-03-25 23:02:12,172 [INFO] Argument:327 - 	 sub Args: 
+2024-03-25 23:02:12,172 [INFO] Argument:325 - Argument : Instancevalue: DMA1_Channel1
+2024-03-25 23:02:12,174 [INFO] Argument:335 - Argument : Instancevalue: DMA1_Channel1
+2024-03-25 23:02:12,174 [INFO] Argument:325 - Argument : Initvalue: null
+2024-03-25 23:02:12,174 [INFO] Argument:327 - 	 sub Args: 
+2024-03-25 23:02:12,174 [INFO] Argument:325 - Argument : Requestvalue: DMA_REQUEST_ADC1
+2024-03-25 23:02:12,174 [INFO] Argument:335 - Argument : Requestvalue: DMA_REQUEST_ADC1
+2024-03-25 23:02:12,174 [INFO] Argument:325 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2024-03-25 23:02:12,174 [INFO] Argument:335 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2024-03-25 23:02:12,174 [INFO] Argument:325 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2024-03-25 23:02:12,174 [INFO] Argument:335 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2024-03-25 23:02:12,174 [INFO] Argument:325 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2024-03-25 23:02:12,174 [INFO] Argument:335 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2024-03-25 23:02:12,174 [INFO] Argument:325 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_HALFWORD
+2024-03-25 23:02:12,174 [INFO] Argument:335 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_HALFWORD
+2024-03-25 23:02:12,174 [INFO] Argument:325 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_HALFWORD
+2024-03-25 23:02:12,174 [INFO] Argument:335 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_HALFWORD
+2024-03-25 23:02:12,174 [INFO] Argument:325 - Argument : Modevalue: DMA_CIRCULAR
+2024-03-25 23:02:12,174 [INFO] Argument:335 - Argument : Modevalue: DMA_CIRCULAR
+2024-03-25 23:02:12,174 [INFO] Argument:325 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2024-03-25 23:02:12,174 [INFO] Argument:335 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2024-03-25 23:02:12,174 [INFO] Argument:325 - Argument : Lockvalue: null
+2024-03-25 23:02:12,174 [INFO] Argument:335 - Argument : Lockvalue: null
+2024-03-25 23:02:12,174 [INFO] Argument:325 - Argument : Statevalue: null
+2024-03-25 23:02:12,174 [INFO] Argument:335 - Argument : Statevalue: null
+2024-03-25 23:02:12,174 [INFO] Argument:325 - Argument : Parentvalue: null
+2024-03-25 23:02:12,174 [INFO] Argument:335 - Argument : Parentvalue: null
+2024-03-25 23:02:12,174 [INFO] Argument:325 - Argument : XferCpltCallbackvalue: null
+2024-03-25 23:02:12,174 [INFO] Argument:335 - Argument : XferCpltCallbackvalue: null
+2024-03-25 23:02:12,174 [INFO] Argument:325 - Argument : XferHalfCpltCallbackvalue: null
+2024-03-25 23:02:12,174 [INFO] Argument:335 - Argument : XferHalfCpltCallbackvalue: null
+2024-03-25 23:02:12,174 [INFO] Argument:325 - Argument : XferErrorCallbackvalue: null
+2024-03-25 23:02:12,174 [INFO] Argument:335 - Argument : XferErrorCallbackvalue: null
+2024-03-25 23:02:12,174 [INFO] Argument:325 - Argument : XferAbortCallbackvalue: null
+2024-03-25 23:02:12,174 [INFO] Argument:335 - Argument : XferAbortCallbackvalue: null
+2024-03-25 23:02:12,174 [INFO] Argument:325 - Argument : ErrorCodevalue: null
+2024-03-25 23:02:12,174 [INFO] Argument:335 - Argument : ErrorCodevalue: null
+2024-03-25 23:02:12,174 [INFO] Argument:325 - Argument : ChannelIndexvalue: null
+2024-03-25 23:02:12,174 [INFO] Argument:335 - Argument : ChannelIndexvalue: null
+2024-03-25 23:02:12,174 [INFO] Argument:325 - Argument : DMAmuxChannelvalue: null
+2024-03-25 23:02:12,174 [INFO] Argument:335 - Argument : DMAmuxChannelvalue: null
+2024-03-25 23:02:12,174 [INFO] Argument:325 - Argument : DMAmuxChannelStatusvalue: null
+2024-03-25 23:02:12,174 [INFO] Argument:335 - Argument : DMAmuxChannelStatusvalue: null
+2024-03-25 23:02:12,174 [INFO] Argument:325 - Argument : DMAmuxChannelStatusMaskvalue: null
+2024-03-25 23:02:12,174 [INFO] Argument:335 - Argument : DMAmuxChannelStatusMaskvalue: null
+2024-03-25 23:02:12,174 [INFO] Argument:325 - Argument : DMAmuxRequestGenvalue: null
+2024-03-25 23:02:12,175 [INFO] Argument:335 - Argument : DMAmuxRequestGenvalue: null
+2024-03-25 23:02:12,175 [INFO] Argument:325 - Argument : DMAmuxRequestGenStatusvalue: null
+2024-03-25 23:02:12,175 [INFO] Argument:335 - Argument : DMAmuxRequestGenStatusvalue: null
+2024-03-25 23:02:12,175 [INFO] Argument:325 - Argument : DMAmuxRequestGenStatusMaskvalue: null
+2024-03-25 23:02:12,175 [INFO] Argument:335 - Argument : DMAmuxRequestGenStatusMaskvalue: null
+2024-03-25 23:02:12,427 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA222-Lab2\Motor PID Controller\MXTmpFiles\license.tmp_save
+2024-03-25 23:02:12,581 [INFO] CodeEngine:279 - Generated code: C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA222-Lab2\Motor PID Controller\MXTmpFiles\license.tmp
+2024-03-25 23:02:12,778 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA222-Lab2\Motor PID Controller\MXTmpFiles\gpio.tmp_save
+2024-03-25 23:02:12,921 [INFO] CodeEngine:279 - Generated code: C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA222-Lab2\Motor PID Controller\MXTmpFiles\gpio.tmp
+2024-03-25 23:02:14,108 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA222-Lab2\Motor PID Controller\MXTmpFiles\dma.tmp_save
+2024-03-25 23:02:14,182 [INFO] CodeEngine:279 - Generated code: C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA222-Lab2\Motor PID Controller\MXTmpFiles\dma.tmp
+2024-03-25 23:02:14,196 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA222-Lab2\Motor PID Controller\MXTmpFiles\dma_GV.tmp_save
+2024-03-25 23:02:14,249 [INFO] CodeEngine:279 - Generated code: C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA222-Lab2\Motor PID Controller\MXTmpFiles\dma_GV.tmp
+2024-03-25 23:02:14,288 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA222-Lab2\Motor PID Controller\Core\Src\stm32g4xx_it.c_save
+2024-03-25 23:02:14,463 [INFO] CodeEngine:279 - Generated code: C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA222-Lab2\Motor PID Controller\Core\Src\stm32g4xx_it.c
+2024-03-25 23:02:14,490 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA222-Lab2\Motor PID Controller\Core\Inc\stm32g4xx_it.h_save
+2024-03-25 23:02:14,576 [INFO] CodeEngine:279 - Generated code: C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA222-Lab2\Motor PID Controller\Core\Inc\stm32g4xx_it.h
+2024-03-25 23:02:14,614 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA222-Lab2\Motor PID Controller\Core\Src\stm32g4xx_hal_msp.c_save
+2024-03-25 23:02:14,769 [INFO] CodeEngine:279 - Generated code: C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA222-Lab2\Motor PID Controller\Core\Src\stm32g4xx_hal_msp.c
+2024-03-25 23:02:14,788 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA222-Lab2\Motor PID Controller\MXTmpFiles\system.tmp_save
+2024-03-25 23:02:14,859 [INFO] CodeEngine:279 - Generated code: C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA222-Lab2\Motor PID Controller\MXTmpFiles\system.tmp
+2024-03-25 23:02:14,896 [INFO] CodeEngine:311 - oldGeneratedFile, C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA222-Lab2\Motor PID Controller\Core\Inc\stm32g4xx_hal_conf.h_save
+2024-03-25 23:02:14,986 [INFO] CodeEngine:335 - Generated code: C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA222-Lab2\Motor PID Controller\Core\Inc\stm32g4xx_hal_conf.h
+2024-03-25 23:02:15,014 [WARN] IPConfigManager:2946 - Warning: the RefConfig RCC_CommonPeriphClockConfig is not available in your config.xml file
+2024-03-25 23:02:15,036 [WARN] IPConfigManager:3440 - IP not found : TIM
+2024-03-25 23:02:15,038 [WARN] CodeGenerator:3939 - IP not found : null
+2024-03-25 23:02:15,063 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA222-Lab2\Motor PID Controller\Core\Inc\main.h_save
+2024-03-25 23:02:15,149 [INFO] CodeEngine:279 - Generated code: C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA222-Lab2\Motor PID Controller\Core\Inc\main.h
+2024-03-25 23:02:15,171 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA222-Lab2\Motor PID Controller\Core\Src\main.c_save
+2024-03-25 23:02:15,308 [INFO] CodeEngine:279 - Generated code: C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA222-Lab2\Motor PID Controller\Core\Src\main.c
+2024-03-25 23:02:16,184 [INFO] ProjectBuilder:3076 - Time for Copy HAL[1] : 520mS.
+2024-03-25 23:02:16,184 [WARN] ThirdPartyIpManager:480 - Condition 'TrustZone' not fulfilled in pack 'ARM.CMSIS.6.0.0'
+2024-03-25 23:02:16,184 [WARN] ThirdPartyRefParameterProcessor:173 - Condition 'TrustZone;(SIiDtzIiTZ)' has not the same result using Semaphore or Dynamic solver for pack 'ARM.CMSIS.6.0.0''
+2024-03-25 23:02:16,184 [WARN] ThirdPartyIpManager:480 - Condition 'TZ Secure' not fulfilled in pack 'ARM.CMSIS.6.0.0'
+2024-03-25 23:02:16,184 [WARN] ThirdPartyRefParameterProcessor:173 - Condition 'TZ Secure;(SIiDtzIiTZ&SIiDsecureIiSecure)' has not the same result using Semaphore or Dynamic solver for pack 'ARM.CMSIS.6.0.0''
+2024-03-25 23:02:16,184 [WARN] ThirdPartyIpManager:480 - Condition 'TZ Secure' not fulfilled in pack 'ARM.CMSIS.6.0.0'
+2024-03-25 23:02:16,184 [WARN] ThirdPartyRefParameterProcessor:173 - Condition 'TZ Secure;(SIiDtzIiTZ&SIiDsecureIiSecure)' has not the same result using Semaphore or Dynamic solver for pack 'ARM.CMSIS.6.0.0''
+2024-03-25 23:02:16,184 [WARN] ThirdPartyIpManager:480 - Condition 'ARMv7-A Device' not fulfilled in pack 'ARM.CMSIS-DSP.1.15.0'
+2024-03-25 23:02:16,184 [WARN] ThirdPartyIpManager:480 - Condition 'ARMv7-A Device' not fulfilled in pack 'ARM.CMSIS-DSP.1.15.0'
+2024-03-25 23:02:16,607 [INFO] ProjectBuilder:8685 - Time for Copy ThirdParty[1] : 421mS.
+2024-03-25 23:02:17,455 [INFO] ProjectBuilder:8685 - Time for Copy ThirdParty[1] : 848mS.
+2024-03-25 23:02:17,459 [INFO] ProjectBuilder:4485 - Project Generator version: 4.2.0-B44
+2024-03-25 23:02:17,709 [INFO] ConfigFileManager:1495 - The Die is : DIE469
+2024-03-25 23:02:19,887 [INFO] ProjectBuilder:4747 - Time for Generating toolchain IDE Files: 2428mS.
+2024-03-25 23:02:19,888 [INFO] ProjectBuilder:2947 - Time for Copy CMSIS : 0mS.
+2024-03-25 23:02:19,906 [INFO] ProjectBuilder:2947 - Time for Copy CMSIS : 0mS.
+2024-03-25 23:35:29,552 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 

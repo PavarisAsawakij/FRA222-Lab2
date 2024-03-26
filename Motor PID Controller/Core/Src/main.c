@@ -43,32 +43,50 @@
 ADC_HandleTypeDef hadc1;
 DMA_HandleTypeDef hdma_adc1;
 
-UART_HandleTypeDef hlpuart1;
-
 TIM_HandleTypeDef htim3;
 TIM_HandleTypeDef htim4;
 TIM_HandleTypeDef htim5;
 TIM_HandleTypeDef htim8;
 TIM_HandleTypeDef htim15;
 
+UART_HandleTypeDef huart2;
+DMA_HandleTypeDef hdma_usart2_rx;
+DMA_HandleTypeDef hdma_usart2_tx;
+
 /* USER CODE BEGIN PV */
 
 
 uint64_t _micros = 0;
-uint16_t InputRead[100]={0};
+uint16_t InputRead[200]={0};
 uint32_t sumEncode = 0;
 uint32_t sumTrimpot = 0;
 
 uint32_t avgEncode = 0;
-uint32_t avgTrimpot = 0;
+uint16_t avgTrimpot = 0;
 uint16_t test= 0;
 
-float32_t InputV = 0;
-uint16_t BaseV = 10000;
-uint16_t PWM = 0;
+float cmd = 0;
+float cmd_1 = 0;
 
-int32_t Error = 0;
+int16_t Error = 0;
+int16_t Error_1 = 0;
+int16_t Error_2 = 0;
+
+uint16_t PWM = 0;
 uint8_t direction = 0;
+
+float Kp = 4.5;
+float Ki = 0;
+float Kd = 0;
+float A0 = 0;
+float A1 = 0;
+float A2 = 0;
+
+
+uint8_t TxBuffer[4];
+uint8_t HigherPos = 0;
+uint8_t LowerPos = 0;
+
 /* direction = 0 error -
  direction = 1 error +
 */
@@ -81,16 +99,19 @@ arm_pid_instance_f32 PID = {0};
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_DMA_Init(void);
-static void MX_LPUART1_UART_Init(void);
 static void MX_TIM8_Init(void);
 static void MX_TIM3_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_TIM15_Init(void);
 static void MX_TIM5_Init(void);
 static void MX_TIM4_Init(void);
+static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
 
 uint64_t micros();
+void PIDcalculate();
+void motorControl();
+void Communication();
 
 /* USER CODE END PFP */
 
@@ -128,17 +149,17 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_DMA_Init();
-  MX_LPUART1_UART_Init();
   MX_TIM8_Init();
   MX_TIM3_Init();
   MX_ADC1_Init();
   MX_TIM15_Init();
   MX_TIM5_Init();
   MX_TIM4_Init();
+  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
 
 
-  HAL_ADC_Start_DMA(&hadc1,InputRead, 100); // DMA Read
+  HAL_ADC_Start_DMA(&hadc1,InputRead, 200); // DMA Read
   HAL_TIM_Base_Start_IT(&htim15);
   HAL_TIM_Base_Start(&htim5); // system time clock
 
@@ -148,10 +169,14 @@ int main(void)
   HAL_TIM_Base_Start(&htim4);  //motor A2
   HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_1);
 
-  PID.Kp = 0.006;
-  PID.Ki = 0;
-  PID.Kd = 0;
-  arm_pid_init_f32(&PID, 0);
+  __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, 10000); //for Check Timer
+  __HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_1, 0); //for Check Timer
+
+
+
+  A0 = Kp + Ki + Kd;
+  A1 = -Kp - (2*Kd);
+  A2 = Kd;
 
   /* USER CODE END 2 */
 
@@ -165,8 +190,7 @@ int main(void)
 	  test = __HAL_TIM_GET_COUNTER(&htim5);
 	  updateInput();
 	  motorControl();
-
-
+	  Communication();
   }
   /* USER CODE END 3 */
 }
@@ -291,53 +315,6 @@ static void MX_ADC1_Init(void)
   /* USER CODE BEGIN ADC1_Init 2 */
 
   /* USER CODE END ADC1_Init 2 */
-
-}
-
-/**
-  * @brief LPUART1 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_LPUART1_UART_Init(void)
-{
-
-  /* USER CODE BEGIN LPUART1_Init 0 */
-
-  /* USER CODE END LPUART1_Init 0 */
-
-  /* USER CODE BEGIN LPUART1_Init 1 */
-
-  /* USER CODE END LPUART1_Init 1 */
-  hlpuart1.Instance = LPUART1;
-  hlpuart1.Init.BaudRate = 115200;
-  hlpuart1.Init.WordLength = UART_WORDLENGTH_8B;
-  hlpuart1.Init.StopBits = UART_STOPBITS_1;
-  hlpuart1.Init.Parity = UART_PARITY_NONE;
-  hlpuart1.Init.Mode = UART_MODE_TX_RX;
-  hlpuart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  hlpuart1.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
-  hlpuart1.Init.ClockPrescaler = UART_PRESCALER_DIV1;
-  hlpuart1.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
-  if (HAL_UART_Init(&hlpuart1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  if (HAL_UARTEx_SetTxFifoThreshold(&hlpuart1, UART_TXFIFO_THRESHOLD_1_8) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  if (HAL_UARTEx_SetRxFifoThreshold(&hlpuart1, UART_RXFIFO_THRESHOLD_1_8) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  if (HAL_UARTEx_DisableFifoMode(&hlpuart1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN LPUART1_Init 2 */
-
-  /* USER CODE END LPUART1_Init 2 */
 
 }
 
@@ -603,6 +580,54 @@ static void MX_TIM15_Init(void)
 }
 
 /**
+  * @brief USART2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_USART2_UART_Init(void)
+{
+
+  /* USER CODE BEGIN USART2_Init 0 */
+
+  /* USER CODE END USART2_Init 0 */
+
+  /* USER CODE BEGIN USART2_Init 1 */
+
+  /* USER CODE END USART2_Init 1 */
+  huart2.Instance = USART2;
+  huart2.Init.BaudRate = 115200;
+  huart2.Init.WordLength = UART_WORDLENGTH_8B;
+  huart2.Init.StopBits = UART_STOPBITS_1;
+  huart2.Init.Parity = UART_PARITY_NONE;
+  huart2.Init.Mode = UART_MODE_TX_RX;
+  huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
+  huart2.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
+  huart2.Init.ClockPrescaler = UART_PRESCALER_DIV1;
+  huart2.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
+  if (HAL_UART_Init(&huart2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  if (HAL_UARTEx_SetTxFifoThreshold(&huart2, UART_TXFIFO_THRESHOLD_1_8) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  if (HAL_UARTEx_SetRxFifoThreshold(&huart2, UART_RXFIFO_THRESHOLD_1_8) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  if (HAL_UARTEx_DisableFifoMode(&huart2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN USART2_Init 2 */
+
+  /* USER CODE END USART2_Init 2 */
+
+}
+
+/**
   * Enable DMA controller clock
   */
 static void MX_DMA_Init(void)
@@ -616,6 +641,12 @@ static void MX_DMA_Init(void)
   /* DMA1_Channel1_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA1_Channel1_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(DMA1_Channel1_IRQn);
+  /* DMA1_Channel2_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Channel2_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Channel2_IRQn);
+  /* DMA1_Channel3_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Channel3_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Channel3_IRQn);
 
 }
 
@@ -644,6 +675,14 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : LPUART1_RX_Pin */
+  GPIO_InitStruct.Pin = LPUART1_RX_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  GPIO_InitStruct.Alternate = GPIO_AF12_LPUART1;
+  HAL_GPIO_Init(LPUART1_RX_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : LD2_Pin */
   GPIO_InitStruct.Pin = LD2_Pin;
@@ -679,32 +718,27 @@ void updateInput()
 {
 	sumEncode = 0;
 	sumTrimpot = 0;
-	for(int i = 0 ; i<50 ; i++ )
+	for(int i = 0 ; i<100 ; i++ )
 	{
 		sumEncode += InputRead[2*i];
 		sumTrimpot += InputRead[1 + (2*i)];
 	}
-	avgEncode = sumEncode/50;
-	avgTrimpot = sumTrimpot/50;
+	avgEncode = sumEncode/100;
+	avgTrimpot = sumTrimpot/100;
 
 	Error = avgTrimpot - avgEncode;
 
 	if(Error < 0)
 	{
-		Error = (-1)*Error;
 		direction = 1;
 	}
 	else if(Error > 0)
 	{
-		Error = Error;
 		direction = 0;
 	}
+	PIDcalculate();
 
-	InputV = arm_pid_f32(&PID, Error);
-//	else if(Error == 0)
-//	{
-//		InputV = 0;
-//	}
+//	PWM = arm_pid_f32(&PID, Error);
 }
 
 void motorControl()
@@ -713,30 +747,59 @@ void motorControl()
 	if(motorTime < HAL_GetTick())
 	{
 		motorTime = HAL_GetTick()+1;
-		if (BaseV * InputV > 20000)
+		if(direction == 0) // Error +
 		{
-			PWM = 20000;
-		}
-		else
-		{
-			PWM = BaseV * InputV;
-		}
-		if(direction == 0)
-		{
-
 			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, 0);
-			__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_1, PWM);
-//			__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_1, 10000);
+//			__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_1, PWM);
+			__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_1, 10000); //for Check Timer
 
 		}
-		else if(direction == 1)
+		else if(direction == 1) // Error -
 		{
-			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, PWM);
-//			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, 10000);
+			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, 10000); //for Check Timer
+//			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, PWM);
 			__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_1, 0);
 		}
 
 	}
+}
+
+void Communication()
+{
+	static uint16_t CommTime = 0;
+		if(CommTime < HAL_GetTick())
+		{
+			CommTime = HAL_GetTick()+5;
+			HigherPos = (uint8_t)(avgEncode >> 8);
+			LowerPos = (uint8_t)avgEncode;
+
+			TxBuffer[0] = 69;
+			TxBuffer[1] = HigherPos;
+			TxBuffer[2] = LowerPos;
+			TxBuffer[3] = 10;
+			HAL_UART_Transmit_DMA(&huart2, TxBuffer, 4);
+		}
+}
+
+void PIDcalculate()
+{
+    /* y[n] = y[n-1] + A0 * x[n] + A1 * x[n-1] + A2 * x[n-2]  */
+	cmd = cmd_1 + A0*Error + A1*Error_1 + A2 * Error_2;
+	if (cmd > 20000) //Anti windup
+	{
+		cmd = 20000;
+		direction = 0;
+	}
+	else if (cmd < -20000)
+	{
+		cmd = -20000;
+		direction = 1;
+	}
+	cmd_1 = cmd;
+	Error_2 = Error_1;
+	Error_1 = Error;
+
+	PWM = fabs(cmd);
 }
 
 /* USER CODE END 4 */
