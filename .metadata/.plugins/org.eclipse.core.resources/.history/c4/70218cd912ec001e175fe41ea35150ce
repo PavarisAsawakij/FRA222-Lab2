@@ -72,13 +72,10 @@ int16_t Error = 0;
 int16_t Error_1 = 0;
 int16_t Error_2 = 0;
 
-int16_t directError = 0;
-
 uint16_t PWM = 0;
 uint8_t direction = 0;
-int16_t wrappedError = 0;
 
-float Kp = 5;
+float Kp = 3;
 float Ki = 0;
 float Kd = 0;
 float A0 = 0;
@@ -729,35 +726,18 @@ void updateInput()
 	avgEncode = sumEncode/200;
 	avgTrimpot = sumTrimpot/200;
 
-	directError = avgTrimpot - avgEncode;
+	Error = avgTrimpot - avgEncode;
 
-	if (directError > 0)
-	{
-		wrappedError = directError - 4096; // Moving backward with wrap-around
-	}
-	else
-	{
-		wrappedError = directError + 4096; // Moving forward with wrap-around
-	}
 
-	if (abs(directError) < abs(wrappedError))
-	{
-		Error = directError;
-	}
-	else
-	{
-		Error = wrappedError;
-	}
 
-	if (Error < 0)
+	if(Error < 0)
 	{
-		direction = 0; // Counter-clockwise / backward
+		direction = 0;
 	}
-	else
+	else if(Error > 0)
 	{
-		direction = 1; // Clockwise / forward
+		direction = 1;
 	}
-
 	PIDcalculate();
 
 //	PWM = arm_pid_f32(&PID, Error);

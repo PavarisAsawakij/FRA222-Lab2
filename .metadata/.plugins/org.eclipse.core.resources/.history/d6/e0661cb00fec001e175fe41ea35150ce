@@ -72,14 +72,11 @@ int16_t Error = 0;
 int16_t Error_1 = 0;
 int16_t Error_2 = 0;
 
-int16_t directError = 0;
-
 uint16_t PWM = 0;
 uint8_t direction = 0;
-int16_t wrappedError = 0;
 
-float Kp = 5;
-float Ki = 0;
+float Kp = 0.0001;
+float Ki = 0.0002;
 float Kd = 0;
 float A0 = 0;
 float A1 = 0;
@@ -729,35 +726,18 @@ void updateInput()
 	avgEncode = sumEncode/200;
 	avgTrimpot = sumTrimpot/200;
 
-	directError = avgTrimpot - avgEncode;
+	Error = avgTrimpot - avgEncode;
 
-	if (directError > 0)
-	{
-		wrappedError = directError - 4096; // Moving backward with wrap-around
-	}
-	else
-	{
-		wrappedError = directError + 4096; // Moving forward with wrap-around
-	}
 
-	if (abs(directError) < abs(wrappedError))
-	{
-		Error = directError;
-	}
-	else
-	{
-		Error = wrappedError;
-	}
 
-	if (Error < 0)
+	if(Error < 0)
 	{
-		direction = 0; // Counter-clockwise / backward
+		direction = 0;
 	}
-	else
+	else if(Error > 0)
 	{
-		direction = 1; // Clockwise / forward
+		direction = 1;
 	}
-
 	PIDcalculate();
 
 //	PWM = arm_pid_f32(&PID, Error);
@@ -769,17 +749,17 @@ void motorControl()
 	if(motorTime < HAL_GetTick())
 	{
 		motorTime = HAL_GetTick()+1;
-		if(direction == 0) // ทวนเข็ม
+		if(direction == 1) // ทวนเข็ม
 		{
 			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, 0);
-			__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_1, PWM);
-//			__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_1, 10000); //for Check Timer
+//			__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_1, PWM);
+			__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_1, 10000); //for Check Timer
 
 		}
-		else if(direction == 1) // ตามเข็ม
+		else if(direction == 0) // ตามเข็ม
 		{
-//			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, 10000); //for Check Timer
-			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, PWM);
+			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, 10000); //for Check Timer
+//			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, PWM);
 			__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_1, 0);
 		}
 

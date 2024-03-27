@@ -72,14 +72,11 @@ int16_t Error = 0;
 int16_t Error_1 = 0;
 int16_t Error_2 = 0;
 
-int16_t directError = 0;
-
 uint16_t PWM = 0;
 uint8_t direction = 0;
-int16_t wrappedError = 0;
 
-float Kp = 5;
-float Ki = 0;
+float Kp = 0.015;
+float Ki = 0.0005;
 float Kd = 0;
 float A0 = 0;
 float A1 = 0;
@@ -729,35 +726,16 @@ void updateInput()
 	avgEncode = sumEncode/200;
 	avgTrimpot = sumTrimpot/200;
 
-	directError = avgTrimpot - avgEncode;
+	Error = avgTrimpot - avgEncode;
 
-	if (directError > 0)
+	if(Error < 0)
 	{
-		wrappedError = directError - 4096; // Moving backward with wrap-around
+		direction = 1;
 	}
-	else
+	else if(Error > 0)
 	{
-		wrappedError = directError + 4096; // Moving forward with wrap-around
+		direction = 0;
 	}
-
-	if (abs(directError) < abs(wrappedError))
-	{
-		Error = directError;
-	}
-	else
-	{
-		Error = wrappedError;
-	}
-
-	if (Error < 0)
-	{
-		direction = 0; // Counter-clockwise / backward
-	}
-	else
-	{
-		direction = 1; // Clockwise / forward
-	}
-
 	PIDcalculate();
 
 //	PWM = arm_pid_f32(&PID, Error);
@@ -769,17 +747,17 @@ void motorControl()
 	if(motorTime < HAL_GetTick())
 	{
 		motorTime = HAL_GetTick()+1;
-		if(direction == 0) // ทวนเข็ม
+		if(direction == 0) // Error +
 		{
 			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, 0);
-			__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_1, PWM);
-//			__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_1, 10000); //for Check Timer
+//			__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_1, PWM);
+			__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_1, 10000); //for Check Timer
 
 		}
-		else if(direction == 1) // ตามเข็ม
+		else if(direction == 1) // Error -
 		{
-//			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, 10000); //for Check Timer
-			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, PWM);
+			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, 10000); //for Check Timer
+//			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, PWM);
 			__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_1, 0);
 		}
 
@@ -807,15 +785,15 @@ void PIDcalculate()
 {
     /* y[n] = y[n-1] + A0 * x[n] + A1 * x[n-1] + A2 * x[n-2]  */
 	cmd = cmd_1 + A0*Error + A1*Error_1 + A2 * Error_2;
-	if (cmd > 20000 && direction == 1) // ตามเข็ม Anti windup
+	if (cmd > 20000) //Anti windup
 	{
 		cmd = 20000;
-		direction = 1;
+		direction = 0;
 	}
-	else if (cmd < -20000 && direction == 0) // ทวนเข็ม
+	else if (cmd < -20000)
 	{
 		cmd = -20000;
-		direction = 0;
+		direction = 1;
 	}
 	cmd_1 = cmd;
 	Error_2 = Error_1;

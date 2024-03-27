@@ -78,7 +78,7 @@ uint16_t PWM = 0;
 uint8_t direction = 0;
 int16_t wrappedError = 0;
 
-float Kp = 5;
+float Kp = 2;
 float Ki = 0;
 float Kd = 0;
 float A0 = 0;
