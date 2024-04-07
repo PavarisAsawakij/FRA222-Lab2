@@ -4,10 +4,7 @@ Error
 direction
 PWM
 cmd
-HigherTrim
-LowerTrim
-TxBuffer[0]
-TxBuffer[1]
-TxBuffer[2]
+HigherPos
+LowerPos
 TxBuffer
-TxBuffer[3]
+RxBuffer

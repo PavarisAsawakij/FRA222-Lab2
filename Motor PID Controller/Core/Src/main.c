@@ -49,19 +49,22 @@ TIM_HandleTypeDef htim5;
 TIM_HandleTypeDef htim15;
 
 UART_HandleTypeDef huart2;
-DMA_HandleTypeDef hdma_usart2_rx;
 DMA_HandleTypeDef hdma_usart2_tx;
+DMA_HandleTypeDef hdma_usart2_rx;
 
 /* USER CODE BEGIN PV */
 
 
 uint64_t _micros = 0;
 uint16_t InputRead[400]={0};
-uint32_t sumEncode = 0;
-uint32_t sumTrimpot = 0;
+uint64_t sumEncode = 0;
+uint64_t sumTrimpot = 0;
+uint64_t sumTrimpot2 = 0;
+
 
 uint32_t avgEncode = 0;
 uint16_t avgTrimpot = 0;
+uint16_t avgTrimpot2 = 0;
 uint16_t test= 0;
 
 float cmd = 0;
@@ -77,15 +80,16 @@ uint16_t PWM = 0;
 uint8_t direction = 0;
 int16_t wrappedError = 0;
 
-float Kp = 5;
-float Ki = 0;
-float Kd = 0;
+float Kp = 7.5;
+float Ki = 0.000075;
+float Kd = 0.00006;
 float A0 = 0;
 float A1 = 0;
 float A2 = 0;
 
 
 uint8_t TxBuffer[4];
+int8_t RxBuffer[4];
 uint8_t HigherPos = 0;
 uint8_t LowerPos = 0;
 
@@ -113,7 +117,8 @@ uint64_t micros();
 void PIDcalculate();
 void motorControl();
 void Communication();
-
+void UARTDMAconfig();
+void updateInput();
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -175,6 +180,8 @@ int main(void)
   A2 = Kd;
 
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, SET);
+
+  UARTDMAconfig();
 
   /* USER CODE END 2 */
 
@@ -669,7 +676,6 @@ void updateInput()
 	}
 	avgEncode = sumEncode/200;
 	avgTrimpot = sumTrimpot/200;
-
 	directError = avgTrimpot - avgEncode;
 
 	if (directError > 0)
@@ -732,7 +738,6 @@ void Communication()
 			CommTime = HAL_GetTick()+5;
 			HigherPos = (uint8_t)(avgEncode >> 8);
 			LowerPos = (uint8_t)avgEncode;
-
 			TxBuffer[0] = 69;
 			TxBuffer[1] = HigherPos;
 			TxBuffer[2] = LowerPos;
@@ -762,6 +767,15 @@ void PIDcalculate()
 	PWM = fabs(cmd);
 }
 
+void UARTDMAconfig()
+{
+	HAL_UART_Receive_DMA(&huart2, RxBuffer, 4);
+}
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *uart)
+{
+
+}
 /* USER CODE END 4 */
 
 /**
