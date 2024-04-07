@@ -1,15 +1,11 @@
 avgEncode
 avgTrimpot
-InputRead
 Error
 direction
 PWM
 cmd
-test
-A1
 HigherTrim
 LowerTrim
-TxBuffer
 TxBuffer[0]
 TxBuffer[1]
 TxBuffer[2]
