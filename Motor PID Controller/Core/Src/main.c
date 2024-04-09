@@ -53,7 +53,7 @@ TIM_HandleTypeDef htim5;
 TIM_HandleTypeDef htim15;
 
 /* USER CODE BEGIN PV */
-
+int mode_status = 1;
 
 uint64_t _micros = 0;
 uint16_t InputRead[400]={0};
@@ -113,7 +113,7 @@ static void MX_TIM5_Init(void);
 static void MX_TIM4_Init(void);
 static void MX_LPUART1_UART_Init(void);
 /* USER CODE BEGIN PFP */
-
+void Mode_LD2();
 uint64_t micros();
 void PIDcalculate();
 void motorControl();
@@ -194,9 +194,20 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 //	  test = __HAL_TIM_GET_COUNTER(&htim5);
+	  Mode_LD2();
+	  		if (mode_status == 1) {
+	  			motorControl();
+	  		} else if (mode_status == 2) {
+
+	  		} else if (mode_status == 3) {
+	  			motorControl();
+	  			Communication();
+	  		}
+
+
 	  updateInput();
-	  motorControl();
-	  Communication();
+
+
   }
   /* USER CODE END 3 */
 }
@@ -762,6 +773,32 @@ void UARTDMAconfig()
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *uart)
 {
 
+}
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
+	if (GPIO_Pin == GPIO_PIN_13) {
+		int pre_mode_status = mode_status;
+		if (pre_mode_status == 3) {
+			mode_status = 1;
+		} else if (pre_mode_status == 1) {
+
+			mode_status = 2;
+		} else if (pre_mode_status == 2) {
+			mode_status = 3;
+		}
+	}
+}
+void Mode_LD2() {
+	if (mode_status == 1) {
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET); //เปิดไฟ
+	} else if (mode_status == 2) {
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET); //เปิดไฟ
+	} else if (mode_status == 3) {
+		static uint32_t timestamp = 0;
+		if (timestamp <= HAL_GetTick()) {
+			timestamp = HAL_GetTick() + 1000;
+			HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5); // สลับสถานะของ LED
+		}
+	}
 }
 /* USER CODE END 4 */
 
