@@ -195,14 +195,18 @@ int main(void)
     /* USER CODE BEGIN 3 */
 //	  test = __HAL_TIM_GET_COUNTER(&htim5);
 	  Mode_LD2();
-	  		if (mode_status == 1) {
-	  			motorControl();
-	  		} else if (mode_status == 2) {
+	  Communication();
 
+	  		if (mode_status == 1) {
+	  		} else if (mode_status == 2) {
+	  			PWM = 0;
 	  		} else if (mode_status == 3) {
-	  			motorControl();
-	  			Communication();
+	  			PWM = abs(RxInt);
+	  			if(RxInt >= 0) direction = 1;
+	  			else direction = 0;
 	  		}
+  			motorControl();
+
 
 
 	  updateInput();
