@@ -954,6 +954,8 @@ void updateInput() {
 	}
 
 	PIDcalculate();
+	RxInt = (((int16_t)RxBuffer[2] << 8)) + ((int8_t)(RxBuffer[1]));
+
 
 //	PWM = arm_pid_f32(&PID, Error);
 }
@@ -986,8 +988,6 @@ void Communication() {
 		TxBuffer[2] = LowerPos;
 		TxBuffer[3] = 10;
 		HAL_UART_Transmit_DMA(&hlpuart1, TxBuffer, 4);
-		RxInt = (((int16_t)RxBuffer[1] << 8)) | ((int8_t) (RxBuffer[2]));
-
 	}
 }
 
@@ -1043,6 +1043,19 @@ void motor() {
 }
 
 void PID_QEI() {
+//		directError = avgTrimpot - (QEIReadRaw*4096)/3072;
+//		if (directError > 0) {
+//			wrappedError = directError - 4096; // Moving backward with wrap-around
+//		} else {
+//			wrappedError = directError + 4096; // Moving forward with wrap-around
+//		}
+//
+//		if (abs(directError) < abs(wrappedError)) {
+//			error = directError;
+//		} else {
+//			error = wrappedError;
+//		}
+
 	error = avgTrimpot - (QEIReadRaw*4096)/3072;
 	sum_e = sum_e + error;
 	u = (Kp_QEI * error) + (Ki_QEI * sum_e) + (Kd_QEI * (error - error_p));
