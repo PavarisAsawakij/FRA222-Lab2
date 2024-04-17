@@ -88,7 +88,7 @@ uint8_t direction = 0;
 int16_t wrappedError = 0;
 
 float Kp = 0.5;
-float Ki = 0.00001;
+float Ki = 0.00015;
 float Kd = 0.000001;
 float A0 = 0;
 float A1 = 0;
@@ -126,12 +126,20 @@ float rad = 0;
 int16_t error = 0;
 float sum_e = 0;
 
-float Kp_QEI = 0.12;
-float Ki_QEI = 0;
-float Kd_QEI = 0;
+float Kp_QEI = 0.5;
+float Ki_QEI = 0.1;
+float Kd_QEI = 0.001;
 
 float error_p = 0;
 float u = 0;
+
+float pu1 = 0;
+float pe1 = 0;
+float pe2 = 0;
+float delta_u = 0;
+
+
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -219,10 +227,6 @@ int main(void)
 
 	__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_1, 0); //for Check Timer
 
-	A0 = Kp + Ki + Kd;
-	A1 = -Kp - (2 * Kd);
-	A2 = Kd;
-
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, SET);
 	//-------------------------------------------------------------------------------//
 	//----------------------------------Part2:QEI------------------------------------//
@@ -251,7 +255,7 @@ int main(void)
 		Communication();
 		//QEIReadRaw = __HAL_TIM_GET_COUNTER(&htim3);
 		if (mode_status == 1) {
-//			PWM = 0;
+			//PWM = 0;
 
 			duty = 0;
 		} else if (mode_status == 2) {
@@ -861,12 +865,12 @@ void updateInput() {
 
 	avgEncode = sumEncode / 200;
 	avgTrimpot = sumTrimpot / 200;
-
-		/*if (mode_status == 2)
+/*
+		if (mode_status == 2)
 		{
 			avgTrimpot = 2048;
-		}*/
-
+		}
+*/
 	directError = avgTrimpot - avgEncode;
 
 
@@ -925,6 +929,10 @@ void Communication() {
 
 void PIDcalculate() {
 	/* y[n] = y[n-1] + A0 * x[n] + A1 * x[n-1] + A2 * x[n-2]  */
+	A0 = Kp + Ki + Kd;
+	A1 = -Kp - (2 * Kd);
+	A2 = Kd;
+
 	cmd = cmd_1 + A0 * Error + A1 * Error_1 + A2 * Error_2;
 	if (cmd > 1000 && direction == 1) // ตามเ�?�?ม Anti windup
 			{
@@ -974,25 +982,24 @@ void motor() {
 	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, InB);
 }
 
-void PID_QEI() {
-//		directError = avgTrimpot - (QEIReadRaw*4096)/3072;
-//		if (directError > 0) {
-//			wrappedError = directError - 4096; // Moving backward with wrap-around
-//		} else {
-//			wrappedError = directError + 4096; // Moving forward with wrap-around
-//		}
-//
-//		if (abs(directError) < abs(wrappedError)) {
-//			error = directError;
-//		} else {
-//			error = wrappedError;
-//		}
-
+void PID_QEI()
+{
 	error = avgTrimpot - (QEIReadRaw*4096)/3072;
-	sum_e = sum_e + error;
-	u = (Kp_QEI * error) + (Ki_QEI * sum_e) + (Kd_QEI * (error - error_p));
+
+	delta_u = (Kp_QEI+Ki_QEI+Kd_QEI)*error-(Kp_QEI+2*Kd_QEI)*pe1+(Kd_QEI)*pe2;
+	u = delta_u;
+
+	if (u > 100)
+	{
+		u = 100;
+	}
+	else if (u < -100)
+	{
+		u = -100;
+	}
 	duty = u;
-	error_p = error;
+	pe2 = pe1;
+	pe1 = error;
 }
 //-------------------------------------------------------------------------------//
 //-------------------------------------Mode--------------------------------------//
