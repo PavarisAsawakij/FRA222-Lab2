@@ -116,7 +116,7 @@ int Trim = 0;
 int InA = 0;
 int InB = 0;
 
-int16_t period = 500;
+int16_t period = 1000;
 int16_t duty = 0;
 int16_t x = 0;
 
@@ -898,9 +898,6 @@ void updateInput() {
 }
 
 void motorControl() {
-	static uint16_t motorTime = 0;
-	if (motorTime < HAL_GetTick()) {
-		motorTime = HAL_GetTick() + 1;
 		if (direction == 0) // ทว�?เ�?�?ม
 				{
 			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, RESET);
@@ -910,8 +907,6 @@ void motorControl() {
 			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, SET);
 			__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_1, PWM);
 		}
-
-	}
 }
 
 void Communication() {
